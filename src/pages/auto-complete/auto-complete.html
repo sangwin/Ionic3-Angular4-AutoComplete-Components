@@ -1,0 +1,46 @@
+<!--
+  Generated template for the AutoCompletePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+	<ion-navbar>
+		<!-- <button ion-button icon-only menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button> -->
+
+		<ion-title>
+			Select Address
+		</ion-title>
+
+		<ion-buttons end>
+		<button ion-button icon-only (click)="dismiss()">
+				<!-- <ion-icon name="options"></ion-icon> -->
+				I'm Done
+			</button>
+		</ion-buttons>
+	</ion-navbar>
+
+
+	<ion-toolbar>
+		<ion-searchbar  [(ngModel)]="name" (input)="filterItem(name)" [showCancelButton]="true"  (ionCancel)="dismiss()"></ion-searchbar>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<ion-chip #chip3  *ngFor="let item of selectedItems;let i = index">
+		<ion-label>{{ item.name }}</ion-label>
+		<button ion-button clear color="dark" (click)="delete(i)">
+			<ion-icon name="close-circle"></ion-icon>
+		</button>
+	</ion-chip>
+	<ion-list>
+		<ion-item *ngFor="let item of filteredItems" tappable   (click)="chooseItem(item)">
+			{{ item.name }}
+		</ion-item>
+	</ion-list>
+
+
+</ion-content>

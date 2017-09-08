@@ -1,0 +1,87 @@
+<!--
+  Generated template for the AddJobPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+	<ion-navbar>
+		<ion-title>add-job</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+	<form [formGroup]="todo" (ngSubmit)="logForm()">
+
+		<ion-item>
+			<ion-label floating>Username<sup class="error-msg">*Required</sup></ion-label>
+			<ion-input type="text"  formControlName="username"></ion-input>
+		</ion-item>
+		<!-- <div class="error-msg" [hidden]="todo.controls.username.valid">This is required field</div> -->
+
+		<ion-item>
+			<ion-label floating>Email ID</ion-label>
+			<ion-input type="email"  formControlName="email"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label floating>Phone</ion-label>
+			<ion-input type="number"  formControlName="phone"></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label floating>Password</ion-label>
+			<ion-input type="password" formControlName="password"></ion-input>
+		</ion-item>
+		<div class="error-msg" [hidden]="todo.controls.password.valid">Password must be at least 6 characters long, and contain a number</div>
+
+		<ion-item>
+			<ion-label floating>Description</ion-label>
+			<!-- <ion-input type="text" formControlName="description"></ion-input> -->
+			<ion-textarea formControlName="description"></ion-textarea>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>Start Time</ion-label>
+			<ion-datetime formControlName="start_time" displayFormat="h:mm A" pickerFormat="h mm A"></ion-datetime>
+		</ion-item>
+		<ion-item>
+			<ion-label>End Time</ion-label>
+			<ion-datetime formControlName="end_time" displayFormat="h:mm A" pickerFormat="h mm A"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>Date</ion-label>
+			<ion-datetime displayFormat="MMM DD, YYYY hh:mm A"  formControlName="date"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>Multiple select</ion-label>
+			<ion-select formControlName="toppings" multiple="true" okText="I'm Done" cancelText="Dismiss">
+				<ion-option>Monday</ion-option>
+				<ion-option>Tuesday</ion-option>
+				<ion-option>Wednesday</ion-option>
+				<ion-option>Thursday</ion-option>
+				<ion-option>Friday</ion-option>
+				<ion-option>Saturday</ion-option>
+				<ion-option>Sunday</ion-option>
+			</ion-select>
+		</ion-item>
+
+
+	<ion-chip #chip3  *ngFor="let item of selectedItems;let i = index">
+		<ion-label>{{ item.name }}</ion-label>
+		<button ion-button clear color="dark" (click)="delete(i)">
+			<ion-icon name="close-circle"></ion-icon>
+		</button>
+	</ion-chip>
+	<a (click)="showAddressModal()">Add addresses</a>
+	<a (click)="showMultipleCommentsModal()">Add showMultipleCommentsModal</a>
+		<ion-item>
+			<button ion-button block type="submit" [disabled]="!todo.valid">Submit</button>
+		</ion-item>
+	</form>
+</ion-content>
