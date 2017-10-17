@@ -1,6 +1,6 @@
 
 
-saNG4!
+Ionic3 Angular4 AutoComplete!
 ===================
 
 [**Sangwin Gawande**](http://sangw.in)
